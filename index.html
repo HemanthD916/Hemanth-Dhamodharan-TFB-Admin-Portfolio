@@ -6,7 +6,7 @@
     <title>Applicant Portfolio | Program Administrative Assistant</title>
     <style>
         :root {
-            --tfb-green: #2E5C31; /* Texas Farm Bureau inspired green */
+            --tfb-green: #2E5C31; 
             --tfb-light-green: #eaf1eb;
             --tfb-gray: #f4f4f4;
             --text-dark: #333;
@@ -149,14 +149,30 @@
             cursor: pointer;
             border-radius: 4px;
             font-size: 12px;
+            transition: background-color 0.2s;
         }
 
         .btn-action:hover {
             background-color: #1e3f20;
         }
 
+        
+        .btn-withdraw {
+            background-color: #d9534f;
+            margin-left: 10px;
+        }
+
+        .btn-withdraw:hover {
+            background-color: #c9302c;
+        }
+
         .status-approved {
             color: green;
+            font-weight: bold;
+        }
+
+        .status-withdrawn {
+            color: #d9534f;
             font-weight: bold;
         }
 
@@ -181,7 +197,7 @@
     <div class="container">
         
         <div class="alert-box">
-            <strong>Welcome HR Team!</strong> This interactive dashboard was hand coded to demonstrate my practical skills in updating web based content, organizing program records, and maintaining accurate participant data for the Voice of Texas Agriculture.
+            <strong>Welcome HR Team!</strong> This interactive dashboard was hand-coded to demonstrate my practical skills in updating web-based content, organizing program records, and maintaining accurate participant data for the Voice of Texas Agriculture.
         </div>
 
         <div class="tabs">
@@ -193,7 +209,7 @@
         
         <div id="WebContent" class="tab-content active">
             <h2>Live Web Content Management Demo</h2>
-            <p>The job description requests <em>"experience updating web based content."</em> Type in the editor below to see how I would manage and publish live announcements for TFB Members.</p>
+            <p>The job description requests <em>"experience updating web-based content."</em> Type in the editor below to see how I would manage and publish live announcements for TFB Members.</p>
             
             <div class="editor-split">
                 <div class="editor-pane">
@@ -230,21 +246,21 @@
                         <td>Jane Doe</td>
                         <td>McLennan</td>
                         <td id="status-1">Pending Review</td>
-                        <td><button class="btn-action" onclick="approveApplication(1)">Verify & Approve</button></td>
+                        <td id="action-1"><button class="btn-action" onclick="approveApplication(1)">Verify & Approve</button></td>
                     </tr>
                     <tr>
                         <td>APP-2026-02</td>
                         <td>John Smith</td>
                         <td>Travis</td>
                         <td id="status-2">Pending Review</td>
-                        <td><button class="btn-action" onclick="approveApplication(2)">Verify & Approve</button></td>
+                        <td id="action-2"><button class="btn-action" onclick="approveApplication(2)">Verify & Approve</button></td>
                     </tr>
                     <tr>
                         <td>APP-2026-03</td>
                         <td>Maria Garcia</td>
                         <td>Bexar</td>
-                        <td class="status-approved">Approved</td>
-                        <td>Completed</td>
+                        <td id="status-3" class="status-approved">Approved</td>
+                        <td id="action-3">Completed <button class="btn-action btn-withdraw" onclick="withdrawApproval(3)">Withdraw Approval</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -266,7 +282,7 @@
             <h3 style="margin-top: 20px;">Recent Event Registration Analytics</h3>
             <ul>
                 <li><strong>Total Summer Conference Registrations:</strong> 425 Members</li>
-                <li><strong>Year-over-Year Retention:</strong> +12% increase</li>
+                <li><strong>Year over Year Retention:</strong> +12% increase</li>
                 <li><strong>Compliance Standard:</strong> 100% data confidentiality maintained</li>
             </ul>
         </div>
@@ -306,9 +322,27 @@
         
         function approveApplication(id) {
             var statusCell = document.getElementById('status-' + id);
+            var actionCell = document.getElementById('action-' + id);
+            
+            
             statusCell.innerHTML = "Approved";
             statusCell.className = "status-approved";
-            alert("Record updated successfully. Participant data secured in accordance with TFB standards.");
+            
+            
+            actionCell.innerHTML = 'Completed <button class="btn-action btn-withdraw" onclick="withdrawApproval(' + id + ')">Withdraw Approval</button>';
+        }
+
+        
+        function withdrawApproval(id) {
+            var statusCell = document.getElementById('status-' + id);
+            var actionCell = document.getElementById('action-' + id);
+            
+            
+            statusCell.innerHTML = "Approval Withdrawn";
+            statusCell.className = "status-withdrawn";
+            
+            
+            actionCell.innerHTML = '<button class="btn-action" onclick="approveApplication(' + id + ')">Verify & Approve</button>';
         }
     </script>
 </body>
