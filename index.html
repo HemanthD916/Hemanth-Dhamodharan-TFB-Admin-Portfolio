@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Portfolio | Program Administrative Assistant</title>
+    <style>
+        :root {
+            --tfb-green: #2E5C31; /* Texas Farm Bureau inspired green */
+            --tfb-light-green: #eaf1eb;
+            --tfb-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--tfb-gray);
+            color: var(--text-dark);
+        }
+
+        header {
+            background-color: var(--tfb-green);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--tfb-green);
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: var(--tfb-green);
+            background-color: var(--tfb-light-green);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background-color: var(--tfb-green);
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        
+        .editor-split {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .editor-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .live-preview {
+            border: 2px dashed var(--tfb-green);
+            padding: 15px;
+            background-color: var(--tfb-light-green);
+            min-height: 150px;
+            border-radius: 4px;
+        }
+
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--tfb-green);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-action {
+            background-color: var(--tfb-green);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .btn-action:hover {
+            background-color: #1e3f20;
+        }
+
+        .status-approved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-left: 4px solid #ffeeba;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Interactive Portfolio Demonstration</h1>
+        <p>Prepared for the Texas Farm Bureau - Organization Division</p>
+        <p><strong>Position:</strong> Program Administrative Assistant</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="alert-box">
+            <strong>Welcome HR Team!</strong> This interactive dashboard was hand coded to demonstrate my practical skills in updating web based content, organizing program records, and maintaining accurate participant data for the Voice of Texas Agriculture.
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'WebContent')">Web Content Updater</button>
+            <button class="tab-btn" onclick="openTab(event, 'Scholarships')">Scholarship Coordination</button>
+            <button class="tab-btn" onclick="openTab(event, 'Database')">Database & Records</button>
+        </div>
+
+        
+        <div id="WebContent" class="tab-content active">
+            <h2>Live Web Content Management Demo</h2>
+            <p>The job description requests <em>"experience updating web based content."</em> Type in the editor below to see how I would manage and publish live announcements for TFB Members.</p>
+            
+            <div class="editor-split">
+                <div class="editor-pane">
+                    <label for="cms-editor"><strong>Backend Content Editor:</strong></label>
+                    <textarea id="cms-editor" onkeyup="updatePreview()">Join us for the upcoming Summer Conference! Registration is now open for all Texas Farm Bureau member-families. Ensure your family has a viable, domestic source of food, fiber, and fuel by staying engaged with our advocacy efforts.</textarea>
+                </div>
+                <div class="editor-pane">
+                    <label><strong>Live Website Preview:</strong></label>
+                    <div class="live-preview" id="live-preview">
+                        Join us for the upcoming Summer Conference! Registration is now open for all Texas Farm Bureau member families. Ensure your family has a viable, domestic source of food, fiber, and fuel by staying engaged with our advocacy efforts.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="Scholarships" class="tab-content">
+            <h2>Scholarship Program Record Management</h2>
+            <p>Demonstrating day to day administrative coordination for the TFB scholarship program.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Applicant ID</th>
+                        <th>Name</th>
+                        <th>County</th>
+                        <th>Application Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>APP-2026-01</td>
+                        <td>Jane Doe</td>
+                        <td>McLennan</td>
+                        <td id="status-1">Pending Review</td>
+                        <td><button class="btn-action" onclick="approveApplication(1)">Verify & Approve</button></td>
+                    </tr>
+                    <tr>
+                        <td>APP-2026-02</td>
+                        <td>John Smith</td>
+                        <td>Travis</td>
+                        <td id="status-2">Pending Review</td>
+                        <td><button class="btn-action" onclick="approveApplication(2)">Verify & Approve</button></td>
+                    </tr>
+                    <tr>
+                        <td>APP-2026-03</td>
+                        <td>Maria Garcia</td>
+                        <td>Bexar</td>
+                        <td class="status-approved">Approved</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+        <div id="Database" class="tab-content">
+            <h2>System Integration & Analytics</h2>
+            <p>I understand how to interface with established procedures and reporting tools to support leadership decision-making.</p>
+            
+            <div style="background: var(--tfb-gray); padding: 15px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                <strong>Simulated Secure Database Connection:</strong><br><br>
+                Data Source = mimas.itds.unt.edu<br>
+                Initial Catalog = Student4720<br>
+                User ID = StudentUser<br>
+                Status = <span style="color: green;">Connected & Secured (Credentials Masked for Security)</span>
+            </div>
+
+            <h3 style="margin-top: 20px;">Recent Event Registration Analytics</h3>
+            <ul>
+                <li><strong>Total Summer Conference Registrations:</strong> 425 Members</li>
+                <li><strong>Year-over-Year Retention:</strong> +12% increase</li>
+                <li><strong>Compliance Standard:</strong> 100% data confidentiality maintained</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        
+        function updatePreview() {
+            var inputContent = document.getElementById('cms-editor').value;
+            document.getElementById('live-preview').innerText = inputContent;
+        }
+
+        
+        function approveApplication(id) {
+            var statusCell = document.getElementById('status-' + id);
+            statusCell.innerHTML = "Approved";
+            statusCell.className = "status-approved";
+            alert("Record updated successfully. Participant data secured in accordance with TFB standards.");
+        }
+    </script>
+</body>
+</html>
